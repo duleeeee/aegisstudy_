@@ -1,0 +1,41 @@
+// 외계행성의 나이
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* solution(int age) {
+    char* answer;
+    int split[4];
+    
+    if(age > 0 && age < 10) {
+        answer = (char*)malloc(sizeof(char) * 2); // null 문자 고려
+        split[0] = age;
+        answer[0] = split[0] + 97;
+        answer[1] = '\0'; // null 문자 추가
+    }
+    else if(age >= 10 && age < 100) {
+        answer = (char*)malloc(sizeof(char) * 3); // null 문자 고려
+        split[0] = age / 10;
+        split[1] = age % 10;
+        answer[0] = split[0] + 97;
+        answer[1] = split[1] + 97;
+        answer[2] = '\0'; // null 문자 추가
+    }
+    else if(age >= 100 && age < 1000) {
+        answer = (char*)malloc(sizeof(char) * 4); // null 문자 고려
+        split[0] = age / 100;
+        split[1] = (age % 100) / 10;
+        split[2] = age % 10;
+        answer[0] = split[0] + 97;
+        answer[1] = split[1] + 97;
+        answer[2] = split[2] + 97;
+        answer[3] = '\0'; // null 문자 추가
+    }
+    else {
+        answer = (char*)malloc(sizeof(char) * 5); // null 문자 고려
+        strcpy(answer, "baaa");
+    }
+    return answer;
+}
