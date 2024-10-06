@@ -1,0 +1,27 @@
+//합성수 찾기
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int n) {
+    int answer = 0;
+    
+    /* 
+    n이하의 수 k에 대해 k를 1부터 k까지 나눈다.
+    k%i가 0이면 cnt를 하나 올리고 cnt가 3이 되면 합성수로 판단,
+    answer의 값을 1올린다.
+    */
+    
+    for(int i=2; i<=n; i++){
+        int cnt = 0;
+        for(int j=1; j<=i/2; j++){
+            if(i%j == 0) cnt ++;
+            if(cnt>1) {
+                answer++;
+                break;
+            }
+        }
+    }
+    return answer;
+}
