@@ -1,0 +1,36 @@
+//중복 문자 제거하기
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+// 파라미터로 주어지는 문자열은 const로 주어집니다. 변경하려면 문자열을 복사해서 사용하세요.
+/* **설계**
+1. my_string의 문자를 검색
+2. check 안에 없으면 해당 문자를 check에 넣음
+2. check 안에 없으면 해당 문자를 answer에 넣음 (index++)
+3. check 안에 있으면 해당 문자를 건너 뜀
+4. 반복
+5. answer의 마지막에 \0 삽입
+*/
+char* solution(const char* my_string) {
+    // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
+    char* answer = (char*)malloc(sizeof(char)*(strlen(my_string)+1));
+    char* check = (char*)malloc(sizeof(char)*(strlen(my_string)+1));
+    int index = 1;
+    
+    answer[0] = my_string[0];
+    check[0] = my_string[0];
+    
+    for(int i=1; i<strlen(my_string); i++){
+        for(int j=1; j<index; j++){
+            if(my_string[i] != check[j]){
+                answer[index++] = my_string[i];
+                check[index++] = my_string[i];
+            }
+    
+        }
+    }
+    
+    answer[index] = '\0';
+    return answer;
+}
