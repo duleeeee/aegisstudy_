@@ -25,4 +25,12 @@ int solution(int hp) {
     
     answer = cnt[0]+cnt[1]+cnt[2];
     return answer;
+
+
+    /*
+    hp/5 로 나눈 값을 answer에 저장
+    hp%5를 hp에 저장
+    hp/3으로 나눈 값을 answer에 저장
+    반복
+    */
 }
