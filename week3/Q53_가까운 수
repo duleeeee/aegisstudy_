@@ -1,0 +1,35 @@
+    /*
+    1. 반복문으로 array[]와 n의 차이를 비교
+    2. 차이가 이전 차이 보다 작아졌으면 바꾼다.
+    3. 같으면 추가 비교한다.
+    */
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int array[], size_t array_len, int n) {
+    int answer = 0;
+    int length = 100;
+    int temp = 0;
+    
+    for(int i=0; i<array_len; i++)
+    {
+        if(length>abs(array[i]-n))
+        {
+            length = abs(array[i]-n);
+            temp = i;
+        }
+        else if(length==abs(array[i]-n))
+        {
+            if(array[temp]>array[i])
+            {
+                length = abs(array[i]-n);
+                temp = i;
+            }    
+        }
+    }
+    
+    answer=array[temp];
+    return answer;
+}

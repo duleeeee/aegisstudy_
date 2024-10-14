@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* solution(const char* my_string) {
+    char* answer = (char*)malloc(sizeof(char)*(strlen(my_string)+1));
+    char temp;
+    char* cpymys = strdup(my_string);
+    int index = 0;
+    
+    for(int i=0; i<strlen(cpymys); i++)
+    {
+        if(cpymys[i]>=65 && cpymys[i]<=90) cpymys[i] += 32;
+    }
+    
+    for(int i=0; i<strlen(cpymys); i++)
+    {
+        for(int j=i+1; j<strlen(cpymys); j++)
+        {
+            if(cpymys[i]>cpymys[j])
+            {
+                temp = cpymys[i];
+                cpymys[i] = cpymys[j];
+                cpymys[j] = temp;
+            }
+        }
+    }
+    
+    for(int i=0; i<strlen(cpymys); i++)
+    {
+        answer[index++]=cpymys[i];
+    }
+    
+    answer[index] = '\0';
+    
+    return answer;
+}

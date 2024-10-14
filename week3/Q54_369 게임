@@ -1,0 +1,35 @@
+    /*
+    1. 자리수 확인
+    2. 자리수 만큼 10의 거듭제곱으로 나눔
+    3. 각 몫을 확인하여 result 값 도출
+    */
+    
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int order) {
+    int answer = 0;
+    int temp = order, cnt = 0; 
+    //temp는 order을 조작하기 위해 복사, cnt는 자리 수 결정 용도
+    
+    while(temp != 0)
+    {
+        temp /= 10;
+        cnt++;
+    } 
+    
+    temp = 1; //temp를 10의 거듭제곱으로 만들기 위해 초기화
+    
+    for(int i=0; i<cnt; i++) temp *= 10;
+    
+    while(order != 0)
+    {ㄴ
+        int clap = order/temp;
+        if(clap == 3 || clap == 6 || clap == 9) answer++;
+        order %= temp;
+        temp /= 10;
+    }
+    
+    return answer;
+}

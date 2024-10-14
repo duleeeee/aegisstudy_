@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+char* solution(const char* cipher, int code) {
+    char* answer = (char*)malloc(sizeof(char)*strlen(cipher)+1);
+    int index = 0;
+    
+    for(int i=code-1; i<strlen(cipher); i+=code)
+    {
+        answer[index++]=cipher[i];
+    }
+    
+     answer[index] = '\0';
+    return answer;
+}

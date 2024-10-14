@@ -1,0 +1,61 @@
+//실패본
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+long long solution(const char* numbers) {
+    long long answer = 0;
+    int index = 0;
+    while(1){
+        if(numbers[index]=="z"){
+            answer = 0;
+            index += 4;
+        }
+        else if(numbers[index]=="o"){
+            answer = 1;
+            index += 3;
+        }
+        else if(numbers[index]=="e"){
+            answer = 8;
+            index += 5;
+        }
+        else if(numbers[index]=="n"){
+            answer = 9;
+            index += 4;
+        }
+        else if(numbers[index]=="t"){
+            if(numbers[index+1]=="w"){
+                answer = 2;
+                index += 3;
+            }
+            else{
+                answer = 3;
+                index += 5;
+            }                
+        }
+        else if(numbers[index]=="f"){
+            if(numbers[index+1]=="i"){
+                answer = 5;
+                index += 4;
+            }
+            else{
+                answer = 4;
+                index += 4;
+            }                
+        }
+        else if(numbers[index]=="s"){
+            if(numbers[index+1]=="i"){
+                answer = 6;
+                index += 3;
+            }
+            else{
+                answer = 7;
+                index += 5;
+            }                
+        }
+        
+        if(numbers[index]=='\0') break;
+    }
+    return answer;
+}

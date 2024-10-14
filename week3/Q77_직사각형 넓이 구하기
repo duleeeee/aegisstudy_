@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int** dots, size_t dots_rows, size_t dots_cols) {
+    int row, col;
+    
+    if(dots[0][0] != dots [1][0]) row = abs(dots[1][0] - dots[0][0]);
+    else row = abs(dots[2][0] - dots[0][0]);
+    
+    if(dots[0][1] != dots [1][1]) col = abs(dots[1][1] - dots[0][1]);
+    else row = abs(dots[2][1] - dots[0][1]);
+    
+    return row*col;
+}

@@ -1,0 +1,33 @@
+// 손을 못대서 답본을 썼습니다
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+char** solution(const char* quiz[], size_t quiz_len) {
+    char** answer = (char**)malloc(sizeof(char*) * quiz_len);
+
+    for (int i = 0; i < quiz_len; i++) {
+        int X, Y, Z;
+        char op;
+
+        // 문자열에서 연산자와 숫자를 추출
+        sscanf(quiz[i], "%d %c %d = %d", &X, &op, &Y, &Z);
+
+        // 수식 평가
+        int result;
+        if (op == '+') {
+            result = X + Y;
+        } else {
+            result = X - Y;
+        }
+        answer[i] = (char*)malloc(sizeof(char) * 2);
+        if (result == Z) {
+            answer[i] = "O";
+        } else {
+            answer[i] = "X";
+        }
+    }
+
+    return answer;
+}

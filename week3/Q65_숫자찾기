@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int num, int k) {
+    int answer = 0;
+    int pos = 10, index = 1;
+    
+    while(num/pos != 0) pos *= 10;
+    
+    pos /= 10;
+    
+    while(pos != 0)
+    {
+        if(num/pos == k)
+        {
+            answer = index;
+            break;
+        }
+        else
+        {
+            index ++;
+            num %= pos;
+            pos /= 10;
+        }
+        
+        if(pos == 0) answer = -1;
+    }
+    return answer;
+}
