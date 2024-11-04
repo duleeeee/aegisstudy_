@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int n) {
+    int dic[101] = {0};
+    int index = 1;
+    
+    for(int i=1; index<=100; i++)
+    {
+        if(i%3 == 0 || i/10 == 3 || i%10 == 3 || (i%100)/10==3) continue;
+        dic[index++] = i;
+    }
+    
+    return dic[n];
+}

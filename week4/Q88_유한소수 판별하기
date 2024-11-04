@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int a, int b) {
+    int answer = 2;
+    
+    int r = 0, max = 0, min = 0;
+    (a >= b) ? (max = a) : (max = b);
+    (a >= b) ? (min = b) : (min = a);
+    
+    while (min != 0) {
+        r = max % min;
+        max = min;
+        min = r;
+    }
+    
+    b /= max;
+
+    // 이하 도움 받은 부분
+    while (b % 2 == 0) b /= 2;
+    while (b % 5 == 0) b /= 5;
+    
+    if (b == 1) {
+        answer = 1;  
+    }
+    
+    return answer;
+}

@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* solution(const char* bin1, const char* bin2) {
+
+    int decimal1 = 0, decimal2 = 0;
+
+    
+    for (int i = 0; bin1[i] != '\0'; i++) {
+        decimal1 = decimal1 * 2 + (bin1[i] - '0');
+    }
+
+    
+    for (int i = 0; bin2[i] != '\0'; i++) {
+        decimal2 = decimal2 * 2 + (bin2[i] - '0');
+    }
+
+    
+    int result_decimal = decimal1 + decimal2;
+
+    
+    char buffer[33] = {0};  
+    int index = 31;
+
+    if (result_decimal == 0) {
+        buffer[index--] = '0'; 
+    } else {
+        while (result_decimal > 0) {
+            buffer[index--] = (result_decimal % 2) + '0';
+            result_decimal /= 2;
+        }
+    }
+
+    return strdup(buffer + index + 1); 
+}

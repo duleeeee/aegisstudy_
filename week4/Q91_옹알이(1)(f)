@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+int solution(const char* babbling[], size_t babbling_len) {
+    int answer = 0;
+    const char *dic[4] = {"ma", "ye", "woo", "aya"};  
+    char temp[4] = "";  
+
+    for (int k = 0; k < babbling_len; k++) {  
+        int j = 0;
+        bool valid = true;
+
+        while (babbling[k][j] != '\0') {
+            bool matched = false;  
+
+            
+            for (int d = 0; d < 4; d++) {
+                int len = strlen(dic[d]);
+
+                
+                if (strncmp(&babbling[k][j], dic[d], len) == 0) {
+                    j += len;  
+                    matched = true;
+                    break;
+                }
+            }
+
+            if (!matched) { 
+                valid = false;
+                break;
+            }
+        }
+
+        if (valid) {  
+            answer++;
+        }
+    }
+
+    return answer;
+}

@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int* solution(int** score, size_t score_rows, size_t score_cols) {
+    int* answer = (int*)malloc(sizeof(int)*score_rows);
+    int sum[score_rows];
+    
+    for(int i=0; i<score_rows; i++)
+    {
+        sum[i] = (score[i][0] + score[i][1]);
+    }
+    
+    for(int i=0; i<sizeof(sum)/sizeof(int); i++)
+    {
+        int cnt=1;
+        
+        for(int j=0; j<sizeof(sum)/sizeof(int); j++)
+        {
+            if(sum[i]<sum[j]) cnt++;
+        }
+        
+        answer[i] = cnt;
+    }
+    return answer;
+}

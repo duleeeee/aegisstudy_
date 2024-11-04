@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(const char* before, const char* after) {
+    int answer = 0, index = 0;
+    int alphabet1[26] = {0};
+    int alphabet2[26] = {0};
+    
+    while(before[index] != '\0')
+    {
+        alphabet1[before[index]-'a']++;
+        index++;
+    }
+    
+    index = 0;
+    
+    while(after[index] != '\0')
+    {
+        alphabet2[after[index]-'a']++;
+        index++;
+    }
+    
+    for(int i=0; i<26; i++)
+    {
+        if(alphabet1[i] == alphabet2[i]) answer = 1;
+        else
+        {
+            answer = 0;
+            break;
+        }
+    }
+    
+    return answer;
+}

@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int chicken) {
+    int answer = 0;
+    int coupon = 0;
+    
+    for(int i=0; i<chicken; i++)
+    {
+        coupon++;
+        if(coupon % 10 == 0)
+        {
+            answer++;
+            coupon++;
+        }
+    }
+    return answer;
+}

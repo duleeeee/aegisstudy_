@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int sides[], size_t sides_len) {
+    int answer = 0;
+    int max = (sides[0] >= sides[1]) ? (sides[0]) : (sides[1]);
+    int rest = (sides[0] >= sides[1]) ? (sides[1]) : (sides[0]);
+    
+    for(int i=1; i < max; i++){
+        if(max < rest + i) answer++;
+    }
+    
+    for(int i=max; i < max + rest; i++) answer++;
+    
+    return answer;
+}

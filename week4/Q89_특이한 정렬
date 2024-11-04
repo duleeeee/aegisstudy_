@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int* solution(int numlist[], size_t numlist_len, int n) {
+    int* answer = (int*)malloc(sizeof(int)*numlist_len);
+    int min = 0, index = 0, pos = 0;
+    
+    while(index < numlist_len)
+    {
+        int diff = 9999;
+        
+        for(int i=0; i<numlist_len; i++)
+        {        
+            if(numlist[i] == -1) continue;
+            
+            if(abs(n-numlist[i]) < diff)
+            {
+                min = numlist[i];
+                diff = abs(n-numlist[i]);
+                pos = i;
+            }
+            else if(abs(n-numlist[i]) == diff)
+            {
+                if(min < numlist[i]) 
+                {
+                    min = numlist[i];
+                    pos = i;
+                }
+            }
+        }
+    
+        answer[index++] = min;
+        numlist[pos] = -1;
+    }
+    
+    return answer;
+}

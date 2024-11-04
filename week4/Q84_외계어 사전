@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(const char* spell[], size_t spell_len, const char* dic[], size_t dic_len) {
+    int answer = 2;
+    
+    for(int i=0; i<dic_len; i++)
+    {
+        int cmp=0;
+        
+        for(int k=0; k<spell_len; k++)
+        {
+            int j=0;
+            while(dic[i][j] != '\0')
+            {
+                if(dic[i][j] == spell[k][0])
+                {
+                    cmp++;
+                    break;
+                }
+                j++;
+            }
+        }
+        
+        if(cmp == spell_len) 
+        {
+            answer = 1;
+            break;
+        }
+    }
+    
+    return answer;
+}
